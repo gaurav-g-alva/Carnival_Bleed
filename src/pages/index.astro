@@ -8,6 +8,21 @@ import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
+
+const canonicalURL = new URL(Astro.url.pathname, siteConfig.siteUrl);
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": siteConfig.name,
+  "jobTitle": siteConfig.title,
+  "description": siteConfig.description,
+  "url": siteConfig.siteUrl,
+  "sameAs": [
+    siteConfig.social?.linkedin,
+    siteConfig.social?.twitter,
+    siteConfig.social?.github
+  ].filter(Boolean)
+};
 ---
 
 <html lang="en">
@@ -17,6 +32,23 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={siteConfig.description} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${siteConfig.name} - ${siteConfig.title}`} />
+    <meta property="og:description" content={siteConfig.description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${siteConfig.name} - ${siteConfig.title}`} />
+    <meta property="twitter:description" content={siteConfig.description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +56,9 @@ import "../styles/global.css";
       rel="stylesheet"
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schemaData)} />
   </head>
   <body>
     <Header />

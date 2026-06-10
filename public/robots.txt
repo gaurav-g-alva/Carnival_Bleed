@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Disallow search engine crawlers from indexing the admin dashboard area
+Disallow: /admin/
+
+# Sitemap location (replace with your actual domain when deploying)
+Sitemap: https://yourportfolio.com/sitemap-index.xml

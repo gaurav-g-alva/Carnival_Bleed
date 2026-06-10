@@ -1,6 +1,9 @@
 ---
 import { siteConfig } from "../config";
 
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
+const isBlog = Astro.url.pathname.startsWith("/blog");
+
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
@@ -14,7 +17,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     <ul class="flex items-center gap-8 justify-center">
       <li>
         <a
-          href="#about"
+          href={isHome ? "#about" : "/#about"}
           class="text-gray-700 hover:text-black transition-colors font-medium"
         >
           About
@@ -24,7 +27,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasProjects && (
           <li>
             <a
-              href="#projects"
+              href={isHome ? "#projects" : "/#projects"}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Projects
@@ -36,7 +39,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasExperience && (
           <li>
             <a
-              href="#experience"
+              href={isHome ? "#experience" : "/#experience"}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Experience
@@ -48,10 +51,51 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
         hasEducation && (
           <li>
             <a
-              href="#education"
+              href={isHome ? "#education" : "/#education"}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Education
+            </a>
+          </li>
+        )
+      }
+      <li>
+        <a
+          href="/blog"
+          class={`transition-colors font-medium ${isBlog ? "text-[var(--accent-color)] font-semibold" : "text-gray-700 hover:text-black"}`}
+          style={`--accent-color: ${siteConfig.accentColor}`}
+        >
+          Blog
+        </a>
+      </li>
+      {
+        siteConfig.resumeUrl && (
+          <li>
+            <a
+              href={siteConfig.resumeUrl}
+              download
+              class="inline-flex items-center gap-x-1.5 px-3 py-1.5 border border-[var(--accent-color)] text-[var(--accent-color)] rounded-lg font-mono text-sm font-semibold hover:bg-[var(--accent-color)] hover:text-white transition-all duration-300 shadow-sm"
+              style={`--accent-color: ${siteConfig.accentColor}`}
+              id="header-resume-download"
+            >
+              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-3.5 h-3.5"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 11l5 5l5 -5" />
+                <path d="M12 4l0 12" />
+              </svg>
             </a>
           </li>
         )

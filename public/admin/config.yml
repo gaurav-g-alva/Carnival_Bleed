@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Enable local backend to run 'npx decap-cms-proxy' for offline editing
+local_backend: true
+
+# Media upload directories
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false # Disable previews to keep setup simpler, or let them load in raw markdown
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Ryan Fitzgerald" }
+      - { label: "Tags", name: "tags", widget: "list", default: ["Tech"] }
+      - { label: "Body", name: "body", widget: "markdown" }

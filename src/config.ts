@@ -2,6 +2,8 @@ export const siteConfig = {
   name: "Ryan Fitzgerald",
   title: "Senior Software Engineer",
   description: "Portfolio website of Ryan Fitzgerald",
+  siteUrl: "https://yourportfolio.com", // Used for Sitemap and canonical URLs
+  resumeUrl: "/resume.pdf", // Path to the downloadable resume PDF
   accentColor: "#1d4ed8",
   social: {
     email: "your-email@example.com",
@@ -87,6 +89,29 @@ export const siteConfig = {
         "Built 10+ portfolio projects",
         "Specialized in React and Node.js",
       ],
+    },
+  ],
+  certifications: [
+    {
+      name: "AWS Certified Solutions Architect - Associate",
+      issuer: "Amazon Web Services (AWS)",
+      date: "Jan 2025",
+      link: "https://aws.amazon.com/verification",
+      tags: ["AWS", "Cloud Architecture", "Security"],
+    },
+    {
+      name: "Certified Kubernetes Administrator (CKA)",
+      issuer: "The Linux Foundation",
+      date: "Nov 2024",
+      link: "https://verify.linuxfoundation.org",
+      tags: ["Kubernetes", "DevOps", "Containers"],
+    },
+    {
+      name: "React Developer Certified Professional",
+      issuer: "Meta (Coursera)",
+      date: "Jun 2024",
+      link: "https://coursera.org/verify",
+      tags: ["React", "Frontend", "JavaScript"],
     },
   ],
 };
