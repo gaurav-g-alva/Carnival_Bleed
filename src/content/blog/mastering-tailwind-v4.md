@@ -1,9 +1,13 @@
 ---
-title: "Mastering Tailwind CSS v4 in Astro"
-pubDate: "2026-06-11"
-description: "A deep dive into Tailwind CSS v4 features, including the new Vite integration, CSS-first configuration, and custom properties."
-author: "Ryan Fitzgerald"
-tags: ["TailwindCSS", "Astro", "CSS"]
+title: Mastering Tailwind CSS v4 in Astro
+pubDate: 2026-06-11
+description: A deep dive into Tailwind CSS v4 features, including the new Vite
+  integration, CSS-first configuration, and custom properties.
+author: Gaurav Alva
+tags:
+  - TailwindCSS
+  - Astro
+  - CSS
 ---
 
 Tailwind CSS v4 introduces a massive revamp of the utility-first CSS framework. It is faster, features a CSS-first configuration system, and works out-of-the-box with Vite.
