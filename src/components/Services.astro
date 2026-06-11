@@ -1,0 +1,93 @@
+---
+import { siteConfig } from "../config";
+
+const hasServices = siteConfig.services && siteConfig.services.length > 0;
+const services = siteConfig.services || [];
+
+// Map of icon names to SVG path components
+const iconMap: Record<string, string> = {
+  code: `<polyline points="8 16 2 12 8 8" /><polyline points="16 16 22 12 16 8" /><line x1="14" y1="4" x2="10" y2="20" />`,
+  cloud: `<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a6 6 0 0 0 6-6 6 6 0 0 0-6-6z" />`,
+  "chart-bar": `<line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />`,
+  settings: `<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><circle cx="12" cy="12" r="3" />`,
+  "device-laptop": `<line x1="2" y1="20" x2="22" y2="20" /><rect x="3" y="4" width="18" height="12" rx="2" />`,
+  database: `<ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />`,
+  security: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />`,
+  world: `<circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />`
+};
+
+const defaultIcon = `<circle cx="12" cy="12" r="10" /><path d="M12 8v8M8 12h8" />`;
+---
+
+{
+  hasServices && (
+    <section id="services" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-accent text-ink border-t-4 border-b-4 border-ink relative overflow-hidden select-none">
+      <!-- Halftone pattern side decoration -->
+      <div class="absolute right-0 top-0 w-32 h-full halftone opacity-10 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          
+          <!-- Left Column: Title -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl text-accent-2 animate-pulse">◆</span>
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-ink-2">OUR OFFERINGS</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black text-ink uppercase tracking-tight leading-[0.9]">
+              SERVICES
+            </h2>
+            <p class="font-mono text-sm text-ink-2 leading-relaxed">
+              We design, build, and distribute tactile media and high-end software.
+            </p>
+          </div>
+
+          {/* Right Column: Service Cards */}
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {services.map((service) => {
+                const iconSvg = iconMap[service.icon] || defaultIcon;
+                
+                return (
+                  <div
+                    class="block p-8 bg-white border-2 border-ink rounded-none box-shadow-flat transition-all duration-200 hover:-translate-y-1 hover:bg-paper-2 group"
+                  >
+                    <div>
+                      <div class="flex items-center justify-between mb-6">
+                        {/* Icon Wrapper in Oxblood box with shadow */}
+                        <div
+                          class="w-12 h-12 bg-accent-2 text-paper border-2 border-ink flex items-center justify-center box-shadow-flat transition-transform duration-200 group-hover:scale-105"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            set:html={iconSvg}
+                          />
+                        </div>
+                      </div>
+
+                      <h3 class="text-2xl font-black text-ink mb-3 leading-tight font-display tracking-wide uppercase">
+                        {service.name}
+                      </h3>
+                      <p class="font-mono text-sm text-ink-2 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}

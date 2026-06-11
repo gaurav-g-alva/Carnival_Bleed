@@ -1,0 +1,121 @@
+{
+  "name": "Coding Cup Labs",
+  "title": "ENTERPRISE SOFTWARE & IT SOLUTIONS AGENCY",
+  "description": "Custom Web Development, Managed Cloud Hosting, Data Analytics, and Full-Cycle IT Consulting for Modern Businesses.",
+  "siteUrl": "https://codingcuplabs.com",
+  "resumeUrl": "",
+  "accentColor": "#e0533c",
+  "social": {
+    "email": "hello@codingcuplabs.com",
+    "linkedin": "https://linkedin.com/company/codingcuplabs",
+    "twitter": "https://x.com/codingcuplabs",
+    "github": "https://github.com/codingcuplabs"
+  },
+  "aboutMe": "At Coding Cup Labs, we build high-performance, custom digital products and provide reliable IT infrastructure for companies worldwide. Our team of expert engineers, data analysts, and cloud architects turn complex problems into scalable web systems, data pipelines, and secure cloud environments. We brew technology that empowers businesses to scale and automate seamlessly.",
+  "skills": [
+    "WEB DEVELOPMENT",
+    "CLOUD HOSTING",
+    "DATA ANALYTICS",
+    "IT CONSULTING"
+  ],
+  "services": [
+    {
+      "name": "Custom Web Development",
+      "description": "High-performance websites, web apps, and e-commerce platforms built using modern tech stacks like Astro, React, Node.js, and Python. We prioritize speed, accessibility, and clean architecture.",
+      "icon": "code"
+    },
+    {
+      "name": "Cloud Hosting & Management",
+      "description": "Secure, fast, and scalable managed hosting on AWS and Google Cloud. Continuous integration, automated backups, 99.9% uptime guarantees, and active server monitoring.",
+      "icon": "cloud"
+    },
+    {
+      "name": "Data Analytics & BI",
+      "description": "Turn your business data into actionable insights. We build custom data analytics pipelines, interactive dashboards, and integrate Business Intelligence tools to fuel data-driven decisions.",
+      "icon": "chart-bar"
+    },
+    {
+      "name": "Managed IT & Support",
+      "description": "Proactive IT consulting, security auditing, and 24/7 server and software support to keep your operations running smoothly with zero downtime.",
+      "icon": "settings"
+    }
+  ],
+  "projects": [
+    {
+      "name": "MedCloud EHR Platform",
+      "description": "A secure, HIPAA-compliant electronic health records application built with React, Node.js, and AWS. Features real-time scheduling, secure data sharing, and patient portal integrations.",
+      "link": "#",
+      "skills": ["React", "Node.js", "AWS", "HIPAA"]
+    },
+    {
+      "name": "Apex eCommerce Analytics",
+      "description": "A high-speed dashboard processing millions of events daily, featuring real-time data visualization, customer cohort analysis, and automated PDF performance reporting.",
+      "link": "#",
+      "skills": ["Analytics", "Next.js", "Python", "Tailwind"]
+    },
+    {
+      "name": "HostCup Container Engine",
+      "description": "A proprietary container-based hosting platform designed for auto-scaling Astro and Static websites with integrated global CDN edge caching.",
+      "link": "#",
+      "skills": ["Docker", "Kubernetes", "AWS", "Go"]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Coding Cup Labs Services",
+      "title": "Software Engineering",
+      "dateRange": "Enterprise Grade",
+      "bullets": [
+        "We follow agile methodologies to deliver software on-time and with extreme precision.",
+        "Our code is built following standard design patterns, strict TypeScript rules, and unit testing.",
+        "We provide continuous post-deployment support and custom feature developments."
+      ]
+    },
+    {
+      "company": "Coding Cup Labs Cloud",
+      "title": "Infrastructure & Hosting",
+      "dateRange": "99.9% Uptime",
+      "bullets": [
+        "Fully managed AWS/GCP clusters with container orchestration through Kubernetes.",
+        "Automated CI/CD pipelines to ensure continuous deployments with zero downtime.",
+        "End-to-end security audits, firewall configurations, and vulnerability assessments."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Our Core Value #1",
+      "degree": "Technical Excellence",
+      "dateRange": "Always",
+      "achievements": [
+        "We hire top-tier developers and train constantly on emerging tech like AI and LLMs.",
+        "We build clean, readable, and maintainable software architectures."
+      ]
+    },
+    {
+      "school": "Our Core Value #2",
+      "degree": "Client Obsession",
+      "dateRange": "First Priority",
+      "achievements": [
+        "We collaborate closely with stakeholders to ensure software maps to business value.",
+        "We offer highly responsive direct support channels (Slack, Teams, Email)."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Partner",
+      "issuer": "Amazon Web Services",
+      "date": "Active",
+      "link": "#",
+      "tags": ["Cloud", "Partner"]
+    },
+    {
+      "name": "ISO 27001 Compliance Ready",
+      "issuer": "Internal Audit",
+      "date": "Active",
+      "link": "#",
+      "tags": ["Security", "Compliance"]
+    }
+  ]
+}

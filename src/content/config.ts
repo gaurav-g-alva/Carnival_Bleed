@@ -11,4 +11,9 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const settings = defineCollection({
+  type: "data",
+  schema: z.any(),
+});
+
+export const collections = { blog, settings };

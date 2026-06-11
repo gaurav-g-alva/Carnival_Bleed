@@ -2,39 +2,52 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
-  <div>
+<section
+  id="about"
+  class="p-8 sm:p-12 md:p-16 lg:p-24 bg-accent-2 text-paper border-b-4 border-ink relative overflow-hidden select-none"
+>
+  <!-- Decorative halftone accent -->
+  <div class="absolute left-0 top-0 w-32 h-full halftone opacity-10 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
-        >
-          About Me
+      
+      <!-- Left Column: Title -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl text-accent animate-pulse">◆</span>
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-paper/80">WHO WE ARE</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black text-paper uppercase tracking-tight leading-[0.9]">
+          ABOUT US
         </h2>
         <div
           class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
-        >
-        </div>
+          style={`background-color: var(--color-accent)`}
+        />
       </div>
 
+      <!-- Right Column: Content -->
       <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
+        <p class="text-2xl sm:text-3xl font-bold font-display tracking-wide uppercase leading-snug text-paper">
           {siteConfig.aboutMe}
         </p>
 
-        <div class="pt-4">
-          <div class="flex flex-wrap gap-3">
-            {
-              siteConfig.skills.map((skill) => (
-                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200">
-                  {skill}
-                </span>
-              ))
-            }
+        <!-- Creed / Core Skills -->
+        <div class="pt-6 space-y-4">
+          <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-paper/70">
+            ◆ OUR CORE MANIFESTO ◆
+          </h3>
+          <div class="flex flex-wrap gap-4">
+            {siteConfig.skills.map((skill) => (
+              <span class="px-5 py-3 border-2 border-ink text-ink font-mono text-sm font-black uppercase tracking-wider box-shadow-flat bg-accent hover:bg-paper hover:text-ink transition-all duration-200">
+                ❋ {skill}
+              </span>
+            ))}
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

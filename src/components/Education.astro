@@ -5,47 +5,55 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
 {
   hasEducation && (
-    <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24">
-      <div>
+    <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24 bg-accent text-ink border-b-4 border-ink relative overflow-hidden select-none">
+      <!-- Halftone decoration -->
+      <div class="absolute right-0 top-0 w-32 h-full halftone opacity-10 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-              Education
+          
+          <!-- Left Column: Title -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl text-accent-2 animate-pulse">◆</span>
+              <span class="font-mono text-xs font-bold uppercase tracking-wider text-ink-2">OUR CREED</span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl lg:text-7xl font-black text-ink uppercase tracking-tight leading-[0.9]">
+              VALUES
             </h2>
             <div
               class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
+              style={`background-color: var(--color-accent-2)`}
             />
           </div>
 
+          <!-- Right Column: Values Cards -->
           <div class="lg:col-span-8">
             <div class="space-y-8">
               {siteConfig.education.map((edu) => (
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300">
-                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                <div class="bg-white text-ink rounded-none border-2 border-ink p-6 sm:p-8 box-shadow-flat hover:bg-paper-2 hover:-translate-y-0.5 transition-all duration-200">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4 border-b-2 border-ink/10 pb-4">
                     <div>
-                      <h3 class="text-lg sm:text-xl font-semibold text-gray-900">
+                      <h3 class="text-2xl font-black font-display tracking-wide uppercase text-ink leading-tight">
                         {edu.degree}
                       </h3>
                       <p
-                        class="text-base sm:text-lg"
-                        style={`color: ${siteConfig.accentColor}`}
+                        class="font-mono text-sm font-bold uppercase tracking-wider mt-1"
+                        style={`color: var(--color-accent-2)`}
                       >
                         {edu.school}
                       </p>
                     </div>
-                    <span class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0">
+                    <span class="font-mono text-xs font-bold text-muted mt-2 sm:mt-0 px-2 py-1 bg-gray-100 border border-gray-300">
                       {edu.dateRange}
                     </span>
                   </div>
 
-                  <ul class="space-y-2">
+                  <ul class="space-y-3">
                     {edu.achievements.map((achievement) => (
-                      <li class="flex items-start">
-                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0" />
-                        <span class="text-sm sm:text-base text-gray-600">
-                          {achievement}
-                        </span>
+                      <li class="flex items-start font-mono text-sm text-ink-2 leading-relaxed">
+                        <span class="inline-block text-accent-2 mr-3 font-bold">❋</span>
+                        <span>{achievement}</span>
                       </li>
                     ))}
                   </ul>
@@ -53,6 +61,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

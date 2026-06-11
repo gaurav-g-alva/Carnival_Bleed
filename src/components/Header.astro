@@ -3,114 +3,103 @@ import { siteConfig } from "../config";
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
 const isBlog = Astro.url.pathname.startsWith("/blog");
+const isCertifications = Astro.url.pathname.startsWith("/certifications");
 
+const hasServices = siteConfig.services && siteConfig.services.length > 0;
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+const hasCertifications = siteConfig.certifications && siteConfig.certifications.length > 0;
 ---
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 bg-paper border-b-4 border-ink transition-all duration-300"
 >
-  <nav class="max-w-7xl mx-auto px-8 py-4">
-    <ul class="flex items-center gap-8 justify-center">
-      <li>
-        <a
-          href={isHome ? "#about" : "/#about"}
-          class="text-gray-700 hover:text-black transition-colors font-medium"
-        >
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Wordmark -->
+    <a 
+      href="/" 
+      class="font-display font-black text-2xl sm:text-3xl tracking-tighter uppercase text-ink select-none hover:text-accent-2 transition-colors duration-200"
+    >
+      {siteConfig.name}
+    </a>
+
+    <!-- Nav Links Slab (N7 Archetype) -->
+    <ul class="hidden md:flex items-center divide-x-2 divide-ink border-2 border-ink bg-white font-display text-sm font-black uppercase shadow-sm">
+      <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+        <a href={isHome ? "#about" : "/#about"} class="block px-4 py-2">
           About
         </a>
       </li>
-      {
-        hasProjects && (
-          <li>
-            <a
-              href={isHome ? "#projects" : "/#projects"}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Projects
-            </a>
-          </li>
-        )
-      }
-      {
-        hasExperience && (
-          <li>
-            <a
-              href={isHome ? "#experience" : "/#experience"}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Experience
-            </a>
-          </li>
-        )
-      }
-      {
-        hasEducation && (
-          <li>
-            <a
-              href={isHome ? "#education" : "/#education"}
-              class="text-gray-700 hover:text-black transition-colors font-medium"
-            >
-              Education
-            </a>
-          </li>
-        )
-      }
-      <li>
-        <a
-          href="/blog"
-          class={`transition-colors font-medium ${isBlog ? "text-[var(--accent-color)] font-semibold" : "text-gray-700 hover:text-black"}`}
-          style={`--accent-color: ${siteConfig.accentColor}`}
+      {hasServices && (
+        <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+          <a href={isHome ? "#services" : "/#services"} class="block px-4 py-2">
+            Services
+          </a>
+        </li>
+      )}
+      {hasProjects && (
+        <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+          <a href={isHome ? "#projects" : "/#projects"} class="block px-4 py-2">
+            Projects
+          </a>
+        </li>
+      )}
+      {hasExperience && (
+        <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+          <a href={isHome ? "#experience" : "/#experience"} class="block px-4 py-2">
+            Capabilities
+          </a>
+        </li>
+      )}
+      {hasEducation && (
+        <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+          <a href={isHome ? "#education" : "/#education"} class="block px-4 py-2">
+            Values
+          </a>
+        </li>
+      )}
+      {hasCertifications && (
+        <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+          <a href={isHome ? "#certifications" : "/#certifications"} class="block px-4 py-2">
+            Certifications
+          </a>
+        </li>
+      )}
+      <li class="hover:bg-accent hover:text-ink transition-colors duration-200">
+        <a 
+          href="/blog" 
+          class={`block px-4 py-2 ${isBlog ? "bg-accent text-ink" : "text-ink"}`}
         >
           Blog
         </a>
       </li>
-      {
-        siteConfig.resumeUrl && (
-          <li>
-            <a
-              href={siteConfig.resumeUrl}
-              download
-              class="inline-flex items-center gap-x-1.5 px-3 py-1.5 border border-[var(--accent-color)] text-[var(--accent-color)] rounded-lg font-mono text-sm font-semibold hover:bg-[var(--accent-color)] hover:text-white transition-all duration-300 shadow-sm"
-              style={`--accent-color: ${siteConfig.accentColor}`}
-              id="header-resume-download"
-            >
-              Resume
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-3.5 h-3.5"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                <path d="M7 11l5 5l5 -5" />
-                <path d="M12 4l0 12" />
-              </svg>
-            </a>
-          </li>
-        )
-      }
     </ul>
+
+    <!-- Optional Download Catalog Button (with flat shadow) -->
+    {siteConfig.resumeUrl ? (
+      <a
+        href={siteConfig.resumeUrl}
+        download
+        class="px-4 py-2 bg-accent-2 text-paper border-2 border-ink font-mono text-xs font-bold uppercase tracking-wider box-shadow-flat hover:bg-accent hover:text-ink transition-all duration-200"
+      >
+        Catalog
+      </a>
+    ) : (
+      <!-- Empty placeholder element to maintain alignment if no button -->
+      <div class="w-2"></div>
+    )}
   </nav>
 </header>
 
 <script>
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
-    if (window.scrollY > 100) {
-      header?.classList.add("bg-white/80", "backdrop-blur-sm");
+    if (window.scrollY > 50) {
+      header?.classList.add("shadow-md");
     } else {
-      header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+      header?.classList.remove("shadow-md");
     }
   });
 </script>

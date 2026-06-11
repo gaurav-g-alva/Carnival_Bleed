@@ -10,6 +10,71 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  - name: "settings"
+    label: "Settings"
+    delete: false
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/content/settings/general.json"
+        fields:
+          - { label: "Company Name", name: "name", widget: "string" }
+          - { label: "Company Title/Tagline", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "string" }
+          - { label: "Site URL", name: "siteUrl", widget: "string" }
+          - { label: "Brochure/Resume URL", name: "resumeUrl", widget: "string", required: false }
+          - { label: "Accent Color", name: "accentColor", widget: "color" }
+          - label: "Social Links"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+              - { label: "Twitter/X", name: "twitter", widget: "string", required: false }
+              - { label: "GitHub", name: "github", widget: "string", required: false }
+          - { label: "About Company Text", name: "aboutMe", widget: "text" }
+          - { label: "Core Skills / Expertise", name: "skills", widget: "list" }
+          - label: "Services Offered"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Service Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Icon Name", name: "icon", widget: "select", options: ["code", "cloud", "chart-bar", "settings", "device-laptop", "database", "security", "world"] }
+          - label: "Company Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Project Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Project Link", name: "link", widget: "string", required: false }
+              - { label: "Technologies Used", name: "skills", widget: "list" }
+          - label: "Capabilities / Operations"
+            name: "experience"
+            widget: "list"
+            fields:
+              - { label: "Division / Team", name: "company", widget: "string" }
+              - { label: "Core Capability", name: "title", widget: "string" }
+              - { label: "Metrics / Dates", name: "dateRange", widget: "string" }
+              - { label: "Details / Bullets", name: "bullets", widget: "list" }
+          - label: "Core Values / Why Choose Us"
+            name: "education"
+            widget: "list"
+            fields:
+              - { label: "Category", name: "school", widget: "string" }
+              - { label: "Value Statement", name: "degree", widget: "string" }
+              - { label: "Scope / Priority", name: "dateRange", widget: "string" }
+              - { label: "Details / Achievements", name: "achievements", widget: "list" }
+          - label: "Partners & Certifications"
+            name: "certifications"
+            widget: "list"
+            fields:
+              - { label: "Certification/Partner Name", name: "name", widget: "string" }
+              - { label: "Issuer", name: "issuer", widget: "string" }
+              - { label: "Date / Status", name: "date", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", required: false }
+              - { label: "Tags", name: "tags", widget: "list" }
+
   - name: "blog"
     label: "Blog Posts"
     folder: "src/content/blog"

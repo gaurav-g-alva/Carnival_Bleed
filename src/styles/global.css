@@ -1,5 +1,74 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
 @import "tailwindcss";
 
+@theme {
+  --color-paper: oklch(92% 0.045 50);
+  --color-paper-2: oklch(88% 0.050 45);
+  --color-paper-3: oklch(82% 0.060 40);
+  --color-ink: oklch(18% 0.080 20);
+  --color-ink-2: oklch(28% 0.060 25);
+  --color-muted: oklch(45% 0.05 30);
+  --color-rule: oklch(40% 0.18 25);
+  --color-accent: oklch(86% 0.18 95);
+  --color-accent-2: oklch(40% 0.21 25);
+  --color-accent-ink: oklch(18% 0.080 20);
+  --color-focus: oklch(40% 0.21 25);
+
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: "IBM Plex Mono", monospace;
+}
+
+@utility box-shadow-flat {
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+@utility halftone {
+  background-image: radial-gradient(var(--color-ink) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+}
+
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+}
+
+/* Horizontal scrolling marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    transform: none;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
